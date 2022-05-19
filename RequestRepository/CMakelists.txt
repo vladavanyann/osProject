@@ -1,0 +1,12 @@
+project(RequestRepository)
+
+add_library(
+    RequestRepository SHARED
+
+    RequestRepository.h
+    RequestRepository.cpp
+
+)
+
+target_link_libraries(RequestRepository)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g")
