@@ -3,23 +3,24 @@
 #include <string>
 #include <map>
 #include "ResponseRepository.h"
+#include <boost/asio/post.hpp>
 
 class ResponseRepository {
   std::string number;
   std::string info;
   std::string version;
   std::string body;
+  std::string statusInfoTxt;
+  std::string statusInfoCode;
   std::map<std::string, std::string> headers;
   
   ResponseRepository();
 
-  ResponseRepository(std::string number, std::string info) // version-y default "HTTP/1.0"
-    {};
-  static void sendResponse(int, const ResponseRepository&);
+  ResponseRepository(std::string number, std::string info, std::string statusInfoTxt, std::string statusInfoCode) // version-y default "HTTP/1.0"
+  {};
+  void sendResponse(ResponseRepository& reqObj);
   static void answer(void *);
-  static ResponseRepository generateResponse(
-    const std::map<std::pair<std::string, std::string>, Service *> *,
-     const RequestRepository &);
+  
 
 };
 
